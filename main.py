@@ -18,7 +18,7 @@ def signup():
     
     nameUser_error = ' '
 
-    return "work in progress"
+    return render_template('landingPage.html')
 
 
 
