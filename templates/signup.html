@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div class="form">
+<div class="main">
         <h1> Signup</h1>
         <form method="post">
            <table>
@@ -11,7 +11,7 @@
                  <label>
                     Username   
               </th>
-              <th><input type="text" name="userName" />
+              <th><input type="text" name="userName"  required/>
               </label> </th>
            </tr>
            <tr>
@@ -19,7 +19,7 @@
                  <label>
                     Password 
               </th>
-              <th> <input type="password" name="pass_word" />
+              <th> <input type="password" name="pass_word" required/>
               </label></th>
            </tr>
            <tr>
@@ -27,7 +27,7 @@
                  <label>
                     Verify Password  
               </th>
-              <th> <input type="password" name="password_verify" />
+              <th> <input type="password" name="password_verify" required/>
               </label></th>
            </tr>
            <tr>
