@@ -2,16 +2,18 @@
 
 
 {% block content %}
+<p class="error">{{username_error}}</p>
+<p class="error">{{password_error}}</p>
 <div class="main">
         <h1> Signup</h1>
-        <form method="post">
+        <form method="post" action="/signup">
            <table>
            <tr>
               <th>
                  <label>
                     Username   
               </th>
-              <th><input type="text" name="userName"  required/>
+              <th><input type="text" name="username"  required/>
               </label> </th>
            </tr>
            <tr>
@@ -19,7 +21,7 @@
                  <label>
                     Password 
               </th>
-              <th> <input type="password" name="pass_word" required/>
+              <th> <input type="password" name="password" required/>
               </label></th>
            </tr>
            <tr>

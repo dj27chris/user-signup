@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, url_for
 
 app = Flask(__name__)
 
@@ -15,27 +15,31 @@ def name_verif(x):
 def index():
     return render_template('signup.html')
 
+@app.route("/welcome")
+def welcome():
+    message= request.args.get('message', 'empty')
+    return render_template('landingPage.html', message=message)
 
-@app.route("/", methods=['POST'])
+
+@app.route("/signup", methods=['POST'])
 def signup():
-    user_Name = request.form['userName']
-    password = request.form['pass_word']
+    user_name = request.form['username']
+    password = request.form['password']
     verifiedpw = request.form['password_verify']
     email = request.form['email_opt']
     
-    passw_error = ' '
 
-    if name_verif(user_Name) == False:
-        return "UserName is too short"
-    if ' ' in user_Name:
-        return "Your user name should be one word, no spaces"
+    if name_verif(user_name) == False:
+        return render_template('signup.html', username_error="User name is too short")
+    if ' ' in user_name:
+        return render_template('signup.html', username_error="Your user name should be one word, no spaces.")
 
     if password != verifiedpw:
-        passw_error = "passwords do not match"
+        return render_template('signup.html', password_error="Passwords do not match.")
 
     result = "You have entereted " + user_Name + " for the user name"
 
-    return render_template('landingPage.html', passw_error=passw_error)
+    return redirect(url_for('welcome', message=result))
 
 
 app.run()
